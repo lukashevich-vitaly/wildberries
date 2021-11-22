@@ -1,0 +1,28 @@
+{
+  "name": "wildberris",
+  "version": "1.0.0",
+  "description": "+ Open/close cart\r + Get data from server (Firebase)\r + Get/set data localStorage\r + Use try/catch\r + Render cards\r + Realize search\r + Realize link-category\r + Realize button viewAll",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukashevich-vitaly/wildberris.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukashevich-vitaly/wildberris/issues"
+  },
+  "homepage": "https://github.com/lukashevich-vitaly/wildberris#readme",
+  "devDependencies": {
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependencies": {
+    "swiper": "^7.3.0"
+  }
+}

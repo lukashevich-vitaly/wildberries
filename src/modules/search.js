@@ -1,6 +1,6 @@
-const getGoods = () => {
-    const links = document.querySelectorAll('.navigation-link')
-    const viewAllBtn = document.querySelector('.more')
+const search = () => {
+    const input = document.querySelector('.search-block > input')
+    const searchBtn = document.querySelector('.search-block > button')
 
     const renderGoods = (goods) => {
         const goodsContainer = document.querySelector('.long-goods-list')
@@ -28,11 +28,11 @@ const getGoods = () => {
         })
     }
     
-    const getData = (value, category) => {
+    const getData = (value) => {
         fetch('https://testwildberries-d5c12-default-rtdb.firebaseio.com/db.json')
         .then((response) => response.json())
         .then((data) => {
-            const array = category ? data.filter((item) => item[category] === value) : data
+            const array = data.filter(good => good.name.toLowerCase().includes(value.toLowerCase()))
             
             localStorage.setItem('goods', JSON.stringify(array))
             
@@ -44,30 +44,13 @@ const getGoods = () => {
         })
     }
 
-    links.forEach((link) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault()
-            
-            const linkValue = link.textContent
-            const category = link.dataset.field
-            
-            getData(linkValue, category)
+    try {
+        searchBtn.addEventListener('click', (e) => {
+            getData(input.value)
         })
-    })
-
-    if (localStorage.getItem('goods') && window.location.pathname === '/goods.html') {
-        renderGoods(JSON.parse(localStorage.getItem('goods')))
+    } catch (e) {
+        console.error(e.message);
     }
-
-    if (viewAllBtn) {
-        viewAllBtn.addEventListener('click', (event) => {
-            event.preventDefault()
-            
-            getData()
-        })
-    }
-
-
 }
 
-getGoods()
+export default search
