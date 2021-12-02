@@ -18,5 +18,5 @@
 
 #### Instruction:
 + use "npm i" to create node_moduls, pakage-lock.json
-+ use "npm build" to create project
-+ use "npm watch" to change project in real time 
++ use "npm run build" to create project
++ use "npm run watch" to change project in real time 
