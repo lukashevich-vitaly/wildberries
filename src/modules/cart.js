@@ -103,16 +103,22 @@ const cart = () => {
     const sendForm = () => {
         const cartArray = localStorage.getItem('cart') ?
             JSON.parse(localStorage.getItem('cart')) : []
-        
+
+        const name = document.getElementsByName('nameCustomer')
+        const phone = document.getElementsByName('phoneCustomer')
+
             fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             body: JSON.stringify({
                 cart: cartArray,
-                name: '',
-                phone: ''
+                name: name[0].value,
+                phone: phone[0].value
             })
         }).then(() => {
+                localStorage.removeItem('cart')
                 cart.style.display = ''
+                name[0].value = ''
+                phone[0].value = ''
             })
     }
     
